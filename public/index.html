@@ -34,6 +34,7 @@
       socket.on('receivedMessages', function(message) {
         renderMessages(message);
       });
+
       socket.on('previousMessages', function(messages) {
         for (message of messages) {
           renderMessages(message);
@@ -53,6 +54,8 @@
           };
 
           renderMessages(messageObject);
+
+          $('input[name=message]').val('');
 
           socket.emit('sendMessage', messageObject);
         }
